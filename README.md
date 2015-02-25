@@ -1,7 +1,7 @@
-# Definition SciSerialize
-SciSerialize is a serialization format focusing on scientific data. It is *based on the JSON format* and adds some kind of a type-coding-system. All supported datatypes are converted to valid JSON types and can be saved to JSON and MesssagePack file-formats. The goal of this serialization format is to be cross-platform and -language.
-This definition will show the representations of all required data types to be supported by a serializer implemented in any language.
-To every implementation it is free to deside how the representation inside the specific language looks like, but it is recommendet to keep it simple and similar to the reference implementation. There are no restrictions to extend the serializer with language specific types and representations, however they should be switched off by default so there will be no conflicts between cross language serializers by using defaults. An implementation example of SciSerialize will be given in python.
+# Definition of SciSerialize
+SciSerialize is a serialization format focusing on scientific data. It is *based on the JSON format* and adds some kind of a type-coding-system. All supported datatypes are converted to valid JSON types and can be saved to JSON and MesssagePack data-formats. The goal of this serialization format is to be cross-platform and cross-language.
+This definition will show the output representations of all required data types to be supported by a serializer implemented in any language.
+To every implementation it is free to decide how the representation inside the specific language looks like, but it is recommendet to keep it simple and similar to the reference implementation. There are no restrictions to extend the serializer with language specific types and representations, however they should be switched off by default so there will be no conflicts between cross language serializers by using defaults. A [reference implementation](https://github.com/SciSerialize/sciserialize-python) of SciSerialize is given in python.
 
 ##Formats
 
@@ -10,17 +10,17 @@ To every implementation it is free to deside how the representation inside the s
 
 All data types supported by ScySerialize will be reduced to the data types supported by JSON:
 
-+ Number: 123.987 (double-precision floating-point)
-+ String: "Hello" (dubblequted UTF-8, escaped with backslashes) 
-+ Boolean: true/false
-+ Array: [1.0, 2.0, "a", "b"] (like lists)
-+ Object: {"keyString": "value", "Object containing Numbers array": [1.1, 1.2, 1.3]};(java-script objects like key-value stores)
-+ Null: null (empty values
++ *Number:* `123.987` (double-precision floating-point)
++ *String:* `"Hello"` (dubblequoted UTF-8, escaped with backslashes) 
++ *Boolean:* `true/false`
++ *Array:* `[1.0, 2.0, "a", "b"]` (like lists in python or cell-arrays in matlab)
++ *Object:* `{"keyString": "value", "Object containing Numbers array": [1.1, 1.2, 1.3]}` (java-script objects like key-value stores)
++ *Null:* `null` (empty values)
 
-Binary data will be handled differently for JSON and MessagePack. In JSON, binary data will be stored as base64 strings and in MessagePack the raw binary data well be packed.
+Binary data will be handled differently for JSON and MessagePack. In JSON, binary data will be stored as base64 strings and in MessagePack the raw binary data will be packed.
 
 ##Data Types
-**TODO**
+
 ###Date Time Iso String Coder
 Serialized Representation:
 ```json
@@ -43,7 +43,7 @@ Out[6]: datetime.datetime(2015, 2, 18, 21, 40, 23, 511717)
 ```
 
 ###Time Delta Coder
-Serialized Representation
+Serialized Representation:
 
 ```
 JSON:
@@ -81,7 +81,6 @@ Out[23]: 120
 ```
 
 ###N dimensional Array Coder
-
 
 
 ```python
@@ -125,7 +124,7 @@ array([[[ True,  True,  True,  True,  True],
         [ True,  True,  True,  True,  True],
         [ True,  True,  True,  True,  True]]], dtype=bool)
 
-An with msgpack:
+And with msgpack:
 
 In [32]: b = sciserialize.packb(x)
 In [33]: b
@@ -155,6 +154,8 @@ Out[38]: 781
 ```
 
 + Data Frame (containing columns and rows array and Multidimensional Array)
+  Ndarray must be 2 dimensional.
+
 + Boolean Array (Bytes)
 
 ##Functional Requirements
@@ -168,7 +169,7 @@ Out[38]: 781
   + `packb()`
   + `unpackb()`
 
-##Architecture
+## Architecture
 
 + sciserialize
   + coders
