@@ -10,12 +10,14 @@ To every implementation it is free to decide how the representation inside the s
 
 All data types supported by ScySerialize will be reduced to the data types supported by JSON:
 
-+ *Number:* `123.987` (double-precision floating-point)
-+ *String:* `"Hello"` (dubblequoted UTF-8, escaped with backslashes) 
-+ *Boolean:* `true/false`
-+ *Array:* `[1.0, 2.0, "a", "b"]` (like lists in python or cell-arrays in matlab)
-+ *Object:* `{"keyString": "value", "Object containing Numbers array": [1.1, 1.2, 1.3]}` (java-script objects like key-value stores)
-+ *Null:* `null` (empty values)
+| Type   | Example                | Komment                          |
+|--------|------------------------|----------------------------------|
+| Number | `123.987`              | double-precision floating-point  |
+| String | `"Hello"` | dubblequoted UTF-8, escaped with backslashes  |
+| Boolean| `true/false`           |                                  |
+| Array  | `[1.0, 2.0, "a", "b"]` | like lists in python or cell-arrays in matlab |
+| Object | `{"keyString": "value", "Object containing Numbers array": [1.1, 1.2, 1.3]}` | java-script objects like key-value stores |
+| Null   | `null`                 | empty values                     |
 
 Binary data will be handled differently for JSON and MessagePack. In JSON, binary data will be stored as base64 strings and in MessagePack the raw binary data will be packed.
 
